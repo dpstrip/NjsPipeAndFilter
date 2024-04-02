@@ -1,46 +1,37 @@
 /// Import required modules
 const IMsg = require('./IMsg.js');
 const Pipe = require('./Pipe.js');
-const IFilter = require('./IFilter.js');
+const Filter1 = require('./Filter1.js');
+const Filter2 = require('./Filter2.js');
+const Filter3 = require('./Filter3.js');
 
 
-class Filter1 extends IFilter{
-    execute(IMsg)
-    {
-        console.log(IMsg.data);
-    }
+function pipeline1(msg) {
+    let filter1 = new Filter1();  //defining the class.  Message is in the pipeline and will be sent there.
+    let filter2 = new Filter2();
+    let filter3 = new Filter3();
 
+    let myPipeLine = new Pipe(msg);
+    myPipeLine.register(filter1);
+    myPipeLine.register(filter3);
+    myPipeLine.register(filter2);
+
+    myPipeLine.executePipeLine();
 }
 
-class Filter2 extends IFilter {
-    execute(IMsg) {
-        IMsg.data = this.reverse(IMsg.data);
-        console.log(IMsg.data);
-    }
+function pipeline2(msg) {
+    let filter1 = new Filter1();  //defining the class.  Message is in the pipeline and will be sent there.
+    let filter2 = new Filter2();
 
-    reverse(value) {
-        return Array.from(String(value || '')).reverse().join('');
-    }
+    let myPipeLine = new Pipe(msg);
+    myPipeLine.register(filter1);
+    myPipeLine.register(filter2);
 
-}
-
-class Filter3 extends IFilter {
-    execute(IMsg){
-        IMsg.data = IMsg.data.slice(0,3) + " Foo Bar " + IMsg.data.slice(3);
-        console.log(IMsg.data);
-    }
-
+    myPipeLine.executePipeLine();
 }
 
 let msg = new IMsg("This is my data.");
-let filter1 = new Filter1();  //defining the class.  Message is in the pipeline and will be sent there.
-let filter2 = new Filter2();
-let filter3 = new Filter3();
+let msg2 = new IMsg("This is message 2.");
 
-let myPipeLine = new Pipe(msg);
-myPipeLine.register(filter1);
-myPipeLine.register(filter3);
-
-myPipeLine.register(filter2);
-
-myPipeLine.executePipeLine();
+pipeline1(msg);
+pipeline2(msg2)
