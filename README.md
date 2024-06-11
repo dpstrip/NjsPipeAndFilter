@@ -1,4 +1,4 @@
-### This is a pipe and filter pattern
+# This is a pipe and filter pattern
 The app.js file indicates how to use the library.  You first instantiate the filters you want in the pipeline. 
 let filter2 = new Filter2();
  Once instantiated you then instantiate the pipeline object and register the filters in the pipeline.
