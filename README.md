@@ -6,7 +6,7 @@ let myPipeLine = new Pipe(msg);
   	 myPipeLine.register(filter1);
 Call the pipeline object with the message you are going to send through it.  The message can be any format, but the filters must understand the format.  The examples are simple strings.  You can develop a Json message and have different filters work on different parts of the Json document.
 
-##Project structure
+## Project structure
 To use this project you need to include in your project the IFilter.js, IMsg.js and Pipe.js.
 The IFilter.js file defines a class that you will inherit in all of your real filters.  You will have to override the execute method of the IFilter class.
 The IMsg is used to put the format of the message.  So if you have a Json message you can just construct the message and then put it into a IMsg object for processing.  
