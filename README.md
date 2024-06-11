@@ -1,9 +1,9 @@
 # This is a pipe and filter pattern
-The app.js file indicates how to use the library.  You first instantiate the filters you want in the pipeline. 
-    <b>let filter2 = new Filter2();</b>
- Once instantiated you then instantiate the pipeline object and register the filters in the pipeline.
-let myPipeLine = new Pipe(msg);
-  	 <b>myPipeLine.register(filter1);</b>
+The app.js file indicates how to use the library.  You first instantiate the filters you want in the pipeline.<p> 
+    <b>let filter2 = new Filter2();</b><p>
+ Once instantiated you then instantiate the pipeline object and register the filters in the pipeline.<p>
+     <b>let myPipeLine = new Pipe(msg);
+  	 myPipeLine.register(filter1);</b><p>
 Call the pipeline object with the message you are going to send through it.  The message can be any format, but the filters must understand the format.  The examples are simple strings.  You can develop a Json message and have different filters work on different parts of the Json document.
 
 ## Project structure
